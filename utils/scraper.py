@@ -14,7 +14,7 @@ import shutil
 PUBMED_FTP = "ftp.ncbi.nlm.nih.gov"
 PUBMED_ROUTE = "/pubmed/baseline/"
 XML_GZ_REGEXP = ".xml.gz$"
-NUMBER_OF_FILES_TO_SCRAPE = 4  # approx 12,000 abstracts per file
+NUMBER_OF_FILES_TO_SCRAPE = 4  # approx 14,000 abstracts per file
 TARGET = 'AbstractText'
 
 ftp = ftplib.FTP(PUBMED_FTP)
