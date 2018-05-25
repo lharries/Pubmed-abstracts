@@ -15,7 +15,7 @@ PUBMED_FTP = "ftp.ncbi.nlm.nih.gov"
 PUBMED_ROUTE = "/pubmed/baseline/"
 XML_GZ_REGEXP = ".xml.gz$"
 NUMBER_OF_FILES_TO_SCRAPE = 4  # approx 12,000 abstracts per file
-TARGET = '<AbstractText>'
+TARGET = 'AbstractText'
 
 ftp = ftplib.FTP(PUBMED_FTP)
 ftp.login("anonymous", "")
@@ -38,7 +38,7 @@ files = list(filter(lambda f: re.search(XML_GZ_REGEXP, f), files))
 if not os.path.exists("../data"):
     os.makedirs("../data")
 
-abstracts_file = open(f'../data/abstracts.txt', 'w+')
+abstracts_file = open('../data/abstracts.txt', 'w+')
 
 # limit files to scrape
 if (NUMBER_OF_FILES_TO_SCRAPE < len(files)):
@@ -68,7 +68,7 @@ for f in files:
     # extract abstracts
     with open(local_f_xml, 'r') as f:
         for line in f:
-            abstract_search = re.search('\s+' + TARGET + '(.*)</' + TARGET + '>', line)
+            abstract_search = re.search('\s+<' + TARGET + '>(.*)</' + TARGET + '>', line)
 
             if abstract_search:
                 abstract = abstract_search.group(1)
