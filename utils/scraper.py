@@ -34,6 +34,10 @@ except ftplib.error_perm as empty:
 # keep only XML_GZ
 files = list(filter(lambda f: re.search(XML_GZ_REGEXP, f), files))
 
+# create the data folder if not exists
+if not os.path.exists("../data"):
+    os.makedirs("../data")
+
 abstracts_file = open(f'../data/abstracts.txt', 'w+')
 
 # limit files to scrape
